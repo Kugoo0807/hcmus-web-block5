@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-10-27T17:01:30.613Z",
+  "as_url": "http://127.0.0.1:3251",
+  "include_expiry": true,
+  "results": [
+    {
+      "name": "unregistered redirect_uri stays at AS",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "location_present": false
+      },
+      "expected": {
+        "status": 400,
+        "location_present": false
+      }
+    },
+    {
+      "name": "missing PKCE challenge",
+      "pass": true,
+      "got": {
+        "status": 302,
+        "error": "invalid_request"
+      },
+      "expected": {
+        "status": 302,
+        "error": "invalid_request"
+      }
+    },
+    {
+      "name": "wrong client secret",
+      "pass": true,
+      "got": {
+        "status": 401,
+        "error": "invalid_client"
+      },
+      "expected": {
+        "status": 401,
+        "error": "invalid_client"
+      }
+    },
+    {
+      "name": "first authorization-code exchange",
+      "pass": true,
+      "got": {
+        "status": 200,
+        "error": null
+      },
+      "expected": {
+        "status": 200,
+        "error": null
+      }
+    },
+    {
+      "name": "authorization-code replay",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "invalid_grant"
+      },
+      "expected": {
+        "status": 400,
+        "error": "invalid_grant"
+      }
+    },
+    {
+      "name": "wrong PKCE verifier",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "invalid_grant"
+      },
+      "expected": {
+        "status": 400,
+        "error": "invalid_grant"
+      }
+    },
+    {
+      "name": "authorization code exchanged by another client",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "unauthorized_client"
+      },
+      "expected": {
+        "status": 400,
+        "error": "unauthorized_client"
+      }
+    },
+    {
+      "name": "first refresh rotation",
+      "pass": true,
+      "got": {
+        "status": 200,
+        "error": null
+      },
+      "expected": {
+        "status": 200,
+        "error": null
+      }
+    },
+    {
+      "name": "refresh-token replay revokes family",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "invalid_grant"
+      },
+      "expected": {
+        "status": 400,
+        "error": "invalid_grant"
+      }
+    },
+    {
+      "name": "refresh with another client",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "unauthorized_client"
+      },
+      "expected": {
+        "status": 400,
+        "error": "unauthorized_client"
+      }
+    },
+    {
+      "name": "M2M asks for wallet:charge",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "invalid_scope"
+      },
+      "expected": {
+        "status": 400,
+        "error": "invalid_scope"
+      }
+    },
+    {
+      "name": "M2M can read public rates",
+      "pass": true,
+      "got": {
+        "token_status": 200,
+        "api_status": 200
+      },
+      "expected": {
+        "token_status": 200,
+        "api_status": 200
+      }
+    },
+    {
+      "name": "M2M token cannot charge wallet",
+      "pass": true,
+      "got": {
+        "status": 403
+      },
+      "expected": {
+        "status": 403
+      }
+    },
+    {
+      "name": "expired authorization code",
+      "pass": true,
+      "got": {
+        "status": 400,
+        "error": "invalid_grant"
+      },
+      "expected": {
+        "status": 400,
+        "error": "invalid_grant"
+      }
+    }
+  ]
+}

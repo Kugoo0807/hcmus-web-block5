@@ -1,0 +1,25 @@
+{
+  "name": "hcmus-web-block5",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "OAuth 2.0 lab: Wallet Authorization Server, Wallet API, and Taxi client",
+  "scripts": {
+    "setup:local": "node scripts/generate-local-config.mjs",
+    "start:as": "node --env-file-if-exists=apps/wallet-as/.env.local apps/wallet-as/src/server.mjs",
+    "start:api": "node --env-file-if-exists=apps/wallet-api/.env.local apps/wallet-api/src/server.mjs",
+    "start:taxi": "node --env-file-if-exists=apps/taxi/.env.local apps/taxi/src/server.mjs",
+    "attacks": "node scripts/attack-tests.mjs",
+    "smoke:taxi": "node scripts/smoke-taxi-flow.mjs",
+    "check": "node --check apps/wallet-as/src/server.mjs && node --check apps/wallet-api/src/server.mjs && node --check apps/taxi/src/server.mjs && node --check scripts/attack-tests.mjs && node --check scripts/smoke-taxi-flow.mjs"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "jose": "^5.10.0",
+    "openid-client": "^5.7.1"
+  },
+  "engines": { "node": ">=22.5.0" }
+}

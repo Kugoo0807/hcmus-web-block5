@@ -1,0 +1,5 @@
+node_modules/
+apps/*/data/
+apps/*/.env.local
+evidence/*.log
+.DS_Store
